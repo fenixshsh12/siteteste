@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lumina Café - A melhor experiência em cafés especiais e quitutes">
+    <title>Lumina Café | Experiência Única</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Usando a belíssima font Outfit do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <nav>
+            <div class="logo">Lumina Café</div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#menu">Cardápio</a></li>
+                <li><a href="#about">Nossa História</a></li>
+                <li><button id="cart-btn" class="cart-btn">🛒 Carrinho (<span id="cart-count">0</span>)</button></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h1>O aroma do <span>seu melhor</span> dia.</h1>
+            <p>Grãos cuidadosamente selecionados e torrados com maestria para despertar e aprimorar todos os seus sentidos.</p>
+            <a href="#menu" class="cta-button">Explorar Cardápio</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="menu" class="menu-section">
+            <div class="section-title">
+                <h2>Nosso Cardápio</h2>
+                <p>Preparado com paixão. Servido com excelência.</p>
+            </div>
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="Bebidas Quentes">Bebidas Quentes</button>
+                <button class="filter-btn" data-filter="Comidas">Comidas & Doces</button>
+            </div>
+            
+            <div class="menu-grid" id="menu-grid">
+                <!-- Os itens serão puxados do Banco de Dados via JavaScript aqui -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Lumina Café. Todos os direitos reservados. Feito com cuidado.</p>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <aside class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2>Seu Carrinho</h2>
+            <button id="close-cart" class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items injected by JS -->
+            <p class="empty-cart">Seu carrinho está vazio.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total-price">R$ 0,00</span>
+            </div>
+            <div class="payment-method">
+                <label for="payment-select">Forma de Pagamento:</label>
+                <select id="payment-select">
+                    <option value="pix">PIX (Aprovação imediata)</option>
+                    <option value="credit">Cartão de Crédito</option>
+                </select>
+            </div>
+            <button id="checkout-btn" class="checkout-btn" disabled>Continuar para o Pagamento</button>
+        </div>
+    </aside>
+
+    <!-- Modal de Pagamento & Verificação -->
+    <div class="payment-modal" id="payment-modal">
+        <div class="payment-modal-content">
+            <button class="close-modal" id="close-payment-modal">&times;</button>
+            <div id="payment-details-container">
+                <!-- Injetado via JS dependendo da forma de pagamento -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

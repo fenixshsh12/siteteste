@@ -1,11 +1,11 @@
 const { Pool } = require('pg');
 
-// Use a string de conexão fornecida pelo Render (Variável de Ambiente) ou a local
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:[YOUR-PASSWORD]@db.mqcragzxwnmnsksakqph.supabase.co:5432/postgres';
+// Conexão com a senha oficial no Supabase via PostgreSQL
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:Caioemyris1.@db.mqcragzxwnmnsksakqph.supabase.co:5432/postgres?sslmode=disable';
 
+// O Supabase usa Transaction Poolers por padrão na porta 6543.
 const pool = new Pool({
     connectionString,
-    // Em produção às vezes é necessário o SSL, no Render ele aceita por padrão.
     ssl: { rejectUnauthorized: false }
 });
 

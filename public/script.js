@@ -187,7 +187,7 @@ function processCheckout() {
 
     if (paymentMethod === 'pix') {
         // Substitua abaixo pela sua Chave PIX real (Email, CPF, Telefone ou Aleatória)
-        const chavePix = "copie_e_cole_sua_chave_pix_aqui"; 
+        const chavePix = "21983969653"; 
         
         // Gera a imagem do QR Code automaticamente usando uma API gratuita através da sua chave
         const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(chavePix)}`;

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    setupTheme();
     fetchProducts();
     setupFilters();
     setupCartControls();
@@ -6,6 +7,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let allProducts = [];
 let cart = [];
+
+// --- THEME LOGIC ---
+function setupTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const savedTheme = localStorage.getItem('luminaTheme') || 'light';
+    
+    // Set initial theme
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const targetTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', targetTheme);
+        localStorage.setItem('luminaTheme', targetTheme);
+        updateThemeIcon(targetTheme);
+    });
+}
+
+function updateThemeIcon(theme) {
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
+}
+
 
 // Função que bate no Servidor (SQLite) para pegar os produtos reais
 async function fetchProducts() {

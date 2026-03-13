@@ -1,10 +1,26 @@
 :root {
+    /* LIGHT THEME (Default) */
     --bg-color: #faf7f2;
     --text-main: #2c1e16;
     --primary-color: #c06c3a;
     --secondary-color: #e3d2bc;
     --card-bg: #ffffff;
+    --nav-bg: rgba(44, 30, 22, 0.4);
+    --footer-bg: #2c1e16;
+    --footer-text: #a4988f;
     --transition: 0.3s ease;
+}
+
+[data-theme="dark"] {
+    /* DARK THEME */
+    --bg-color: #121212;
+    --text-main: #f0e6d2;
+    --primary-color: #ff9d5c;
+    --secondary-color: #3a2e26;
+    --card-bg: #1e1e1e;
+    --nav-bg: rgba(18, 18, 18, 0.8);
+    --footer-bg: #0a0a0a;
+    --footer-text: #8c8c8c;
 }
 
 * {
@@ -27,7 +43,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 5%;
-    background: rgba(44, 30, 22, 0.4);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: fixed;
@@ -35,6 +51,7 @@ nav {
     top: 0;
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color var(--transition);
 }
 
 .logo {
@@ -262,12 +279,34 @@ nav {
 
 /* --- FOOTER --- */
 footer {
-    background: var(--text-main);
-    color: #a4988f;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     text-align: center;
     padding: 3rem;
     margin-top: 5rem;
     font-weight: 300;
+    transition: background-color var(--transition), color var(--transition);
+}
+
+/* --- THEME TOGGLE --- */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: transform var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 /* --- CART SIDEBAR --- */
@@ -337,7 +376,8 @@ footer {
 
 .empty-cart {
     text-align: center;
-    color: #8c7e73;
+    color: var(--text-main);
+    opacity: 0.6;
     margin-top: 2rem;
 }
 
@@ -346,11 +386,12 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 .cart-item-info h4 {
     margin-bottom: 0.2rem;
+    color: var(--text-main);
 }
 
 .cart-item-price {
@@ -370,8 +411,8 @@ footer {
 
 .cart-footer {
     padding: 1.5rem;
-    border-top: 1px solid #eee;
-    background: #fafafa;
+    border-top: 1px solid var(--secondary-color);
+    background: var(--card-bg);
 }
 
 .cart-total {
@@ -508,15 +549,15 @@ footer {
 .pix-qr { 
     width: 200px; 
     height: 200px; 
-    background: #f8f8f8; 
+    background: var(--bg-color); 
     margin: 1.5rem auto; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     border-radius: 10px; 
-    border: 2px dashed #ccc;
+    border: 2px dashed var(--primary-color);
     font-weight: 600;
-    color: #888;
+    color: var(--text-main);
 }
 
 .verify-btn { 
@@ -551,18 +592,20 @@ footer {
     display: block;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
-    color: #555;
+    color: var(--text-main);
     font-weight: 600;
 }
 
 .card-input { 
     width: 100%; 
     padding: 0.9rem; 
-    border: 1px solid #ddd; 
+    border: 1px solid var(--secondary-color); 
     border-radius: 8px; 
     font-family: inherit;
     font-size: 1rem;
     outline: none;
+    background: var(--bg-color);
+    color: var(--text-main);
     transition: border-color 0.2s;
 }
 

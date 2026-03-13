@@ -9,15 +9,15 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-// Rota para consultar o banco de dados
-app.get('/api/produtos', (req, res) => {
-    db.all("SELECT * FROM produtos", [], (err, rows) => {
-        if (err) {
-            res.status(500).json({ error: err.message });
-            return;
-        }
-        res.json(rows);
-    });
+// Rota para consultar o banco de dados do Supabase
+app.get('/api/produtos', async (req, res) => {
+    try {
+        const result = await db.query("SELECT * FROM produtos ORDER BY id ASC");
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
 });
 
 // Rota de Checkout Simulada (Mock Payment & Verification)

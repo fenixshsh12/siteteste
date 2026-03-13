@@ -186,13 +186,20 @@ function processCheckout() {
     let html = '';
 
     if (paymentMethod === 'pix') {
+        // Substitua abaixo pela sua Chave PIX real (Email, CPF, Telefone ou Aleatória)
+        const chavePix = "copie_e_cole_sua_chave_pix_aqui"; 
+        
+        // Gera a imagem do QR Code automaticamente usando uma API gratuita através da sua chave
+        const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(chavePix)}`;
+
         html = `
             <h2>Pagamento PIX</h2>
             <p>Escaneie o QR Code abaixo pelo aplicativo do seu banco para pagar.</p>
-            <div class="pix-qr">
-                MOCK QR CODE
+            <div class="pix-qr" style="border: none; background: transparent;">
+                <img src="${qrCodeUrl}" alt="QR Code PIX" style="border-radius: 8px;">
             </div>
-            <p><strong>Valor:</strong> ${document.getElementById('cart-total-price').textContent}</p>
+            <p><strong>Chave PIX (Copia e Cola):</strong> <br><span style="user-select: all; font-weight: bold; color: var(--primary-color);">${chavePix}</span></p>
+            <p style="margin-top: 10px;"><strong>Valor:</strong> ${document.getElementById('cart-total-price').textContent}</p>
             <button class="verify-btn" onclick="verifyPayment('pix')">Já paguei / Verificar</button>
         `;
     } else if (paymentMethod === 'credit') {

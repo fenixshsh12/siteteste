@@ -1,7 +1,7 @@
 const { Pool } = require('pg');
 
-// Conexão com a senha oficial no Supabase via PostgreSQL
-const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:Caioemyris1.@db.mqcragzxwnmnsksakqph.supabase.co:5432/postgres?sslmode=disable';
+// Conexão IPv4 forçada (Render não suporta IPv6 puro do Supabase) 
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:Caioemyris1.@aws-0-sa-east-1.pooler.supabase.com:6543/postgres?sslmode=disable';
 
 // O Supabase usa Transaction Poolers por padrão na porta 6543.
 const pool = new Pool({
